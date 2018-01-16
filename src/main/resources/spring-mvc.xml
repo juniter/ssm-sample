@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context-4.3.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd">
+	<context:component-scan base-package="com.sy" />
+	<mvc:annotation-driven enable-matrix-variables="true" />
+	<context:annotation-config />
+	<mvc:cors>
+		<mvc:mapping path="/api/**" allowed-origins="*"
+			allowed-methods="GET,PUT,DELETE,POST" allowed-headers="ContentType" allow-credentials="false" max-age="60000" />
+		<mvc:mapping path="/resources/**" allowed-origins="*" />
+	</mvc:cors>
+	<mvc:redirect-view-controller path="/" redirect-url="/index.html"></mvc:redirect-view-controller>
+	<mvc:view-resolvers>
+		<!--<mvc:content-negotiation>
+			<mvc:default-views>
+				<bean class="org.springframework.web.servlet.view.json.MappingJackson2JsonView" />
+			</mvc:default-views>
+		</mvc:content-negotiation>-->
+		<mvc:jsp />
+		<mvc:freemarker cache-views="false" suffix=".ftl"/>
+	</mvc:view-resolvers>
+	
+	<mvc:freemarker-configurer>
+		<mvc:template-loader-path location="/templates" />
+	</mvc:freemarker-configurer>
+	
+	<mvc:resources mapping="/resources/**" location="/static/,/public/" cache-period="31556926" />
+</beans>
