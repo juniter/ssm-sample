@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link href="/error/404.css" rel="stylesheet">
+<link href="/error/error.css" rel="stylesheet">
 <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <meta charset="UTF-8">
@@ -13,8 +13,8 @@
 			<div class="col-md-12">
 				<div class="error-template">
 					<h1>Oops!</h1>
-					<h2>404 Not Found</h2>
-					<div class="error-details">Sorry, an error has occured,
+					<h2>${status} ${reason}</h2>
+					<div class="error-details">${reason} Sorry, an error has occured,
 						Requested page not found!</div>
 					<div class="error-actions">
 						<a href="www.baidu.com" class="btn btn-outline-success btn-lg">

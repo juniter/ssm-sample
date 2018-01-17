@@ -6,4 +6,5 @@
         http://www.springframework.org/schema/beans/spring-beans.xsd">
         <!-- Import DataSource Configuration -->
         <import resource="classpath:spring-mybatis.xml" />
+        <import resource="classpath:spring-mvc.xml"/>
 </beans>

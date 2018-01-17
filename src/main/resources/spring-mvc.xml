@@ -11,27 +11,36 @@
         http://www.springframework.org/schema/mvc
         http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd">
 	<context:component-scan base-package="com.sy" />
-	<mvc:annotation-driven enable-matrix-variables="true" />
+	<mvc:annotation-driven enable-matrix-variables="true" content-negotiation-manager="contentNegotiationManager"/>
 	<context:annotation-config />
+	<!--跨域-->
 	<mvc:cors>
-		<mvc:mapping path="/api/**" allowed-origins="*"
+		<mvc:mapping path="/**" allowed-origins="*"
 			allowed-methods="GET,PUT,DELETE,POST" allowed-headers="ContentType" allow-credentials="false" max-age="60000" />
-		<mvc:mapping path="/resources/**" allowed-origins="*" />
 	</mvc:cors>
-	<mvc:redirect-view-controller path="/" redirect-url="/index.html"></mvc:redirect-view-controller>
+	<bean id="contentNegotiationManager" class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
+		<property name="mediaTypes">
+			<value>
+				json=application/json
+				html=text/html
+			</value>
+		</property>
+	</bean>
+	<!--试图解析-->
 	<mvc:view-resolvers>
-		<!--<mvc:content-negotiation>
+		<mvc:content-negotiation>
 			<mvc:default-views>
-				<bean class="org.springframework.web.servlet.view.json.MappingJackson2JsonView" />
+				<bean class="org.springframework.web.servlet.view.json.MappingJackson2JsonView" p:contentType="application/json">
+					<property name="encoding" value="UTF8"/>
+				</bean>
 			</mvc:default-views>
-		</mvc:content-negotiation>-->
-		<mvc:jsp />
-		<mvc:freemarker cache-views="false" suffix=".ftl"/>
+		</mvc:content-negotiation>
+		<mvc:freemarker cache-views="true"/>
 	</mvc:view-resolvers>
-	
+
 	<mvc:freemarker-configurer>
-		<mvc:template-loader-path location="/templates" />
+		<mvc:template-loader-path location="classpath*:/templates/"/>
 	</mvc:freemarker-configurer>
-	
-	<mvc:resources mapping="/resources/**" location="/static/,/public/" cache-period="31556926" />
+	<!--静态资源-->
+	<mvc:resources mapping="/**" location="classpath:/static/,classpath:/public/" cache-period="31556926" />
 </beans>
