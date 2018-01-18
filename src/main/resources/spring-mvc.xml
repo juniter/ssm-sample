@@ -31,7 +31,7 @@
 		</property>
 		<property name="defaultContentType" value="text/html"/>  
 	</bean>
-	<!--试图解析 -->
+	<!--视图解析 -->
 	<bean id="freemarkerConfig" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
 		<property name="templateLoaderPath" value="/WEB-INF/templates/" />
 	</bean>

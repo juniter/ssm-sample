@@ -6,7 +6,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -19,7 +18,7 @@ public class SampleController {
 		logger.info("请求信息:{}",sample.toString());
 	}
 
-	@PostMapping(value="/rect")
+	@GetMapping(value="/rect")
 	public ModelAndView redirectPage(ModelAndView mav){
 		mav.setViewName("sview");
 		mav.getModel().put("email","juniter@outlook.com");
