@@ -1,6 +1,5 @@
 package com.sy.controller.conf;
 
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -11,7 +10,7 @@ import java.util.Map;
 
 @Controller
 public class ErrorController {
-    @RequestMapping(value = "/error", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @RequestMapping(value = "/error")
     public ModelAndView handle(HttpServletRequest request,ModelAndView mav) {
         Map<String, Object> map = new HashMap<>();
         map.put("status", request.getAttribute("javax.servlet.error.status_code"));
