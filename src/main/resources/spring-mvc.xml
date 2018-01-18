@@ -11,36 +11,53 @@
         http://www.springframework.org/schema/mvc
         http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd">
 	<context:component-scan base-package="com.sy" />
-	<mvc:annotation-driven enable-matrix-variables="true" content-negotiation-manager="contentNegotiationManager"/>
+	<mvc:annotation-driven enable-matrix-variables="true"
+		content-negotiation-manager="contentNegotiationManager" />
 	<context:annotation-config />
-	<!--跨域-->
+	<!--跨域 -->
 	<mvc:cors>
 		<mvc:mapping path="/**" allowed-origins="*"
-			allowed-methods="GET,PUT,DELETE,POST" allowed-headers="ContentType" allow-credentials="false" max-age="60000" />
+			allowed-methods="GET,PUT,DELETE,POST" allowed-headers="ContentType"
+			allow-credentials="false" max-age="60000" />
 	</mvc:cors>
-	<bean id="contentNegotiationManager" class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
+	<bean id="contentNegotiationManager"
+		class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
 		<property name="mediaTypes">
 			<value>
 				json=application/json
 				html=text/html
+				xml=application/xml
 			</value>
 		</property>
 	</bean>
-	<!--试图解析-->
-	<mvc:view-resolvers>
-		<mvc:content-negotiation>
-			<mvc:default-views>
-				<bean class="org.springframework.web.servlet.view.json.MappingJackson2JsonView" p:contentType="application/json">
-					<property name="encoding" value="UTF8"/>
+	<!--试图解析 -->
+	<bean id="freemarkerConfig"
+		class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
+		<property name="templateLoaderPath" value="/templates/" />
+	</bean>
+	<bean
+		class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+		<property name="viewResolvers">
+			<list>
+				<bean id="viewResolver"
+					class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
+					<property name="cache" value="true" />
+					<property name="prefix" value="/templates/" />
+					<property name="suffix" value=".ftl" />
+					<property name="contentType" value="text/html;charset=utf-8" />
 				</bean>
-			</mvc:default-views>
-		</mvc:content-negotiation>
-		<mvc:freemarker cache-views="true"/>
-	</mvc:view-resolvers>
+			</list>
+		</property>
+		<property name="defaultViews">
+			<list>
+				<bean
+					class="org.springframework.web.servlet.view.json.MappingJackson2JsonView"
+					p:contentType="application/json;charset=utf-8" />
+			</list>
+		</property>
+	</bean>
 
-	<mvc:freemarker-configurer>
-		<mvc:template-loader-path location="classpath*:/templates/"/>
-	</mvc:freemarker-configurer>
-	<!--静态资源-->
-	<mvc:resources mapping="/**" location="classpath:/static/,classpath:/public/" cache-period="31556926" />
+	<!--静态资源 -->
+	<mvc:resources mapping="/**"
+		location="classpath:/static/,classpath:/public/" cache-period="31556926" />
 </beans>
