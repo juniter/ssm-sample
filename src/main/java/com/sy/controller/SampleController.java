@@ -18,10 +18,9 @@ public class SampleController {
 		logger.info("请求信息:{}",sample.toString());
 	}
 
-	@GetMapping(value="/rect")
+	@GetMapping(value="/ws")
 	public ModelAndView redirectPage(ModelAndView mav){
-		mav.setViewName("sview");
-		mav.getModel().put("email","juniter@outlook.com");
+		mav.setViewName("ws/wsclient");
 		return mav;
 	}
 }

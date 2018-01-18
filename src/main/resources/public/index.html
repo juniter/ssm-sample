@@ -5,35 +5,60 @@
     <title>Home</title>
     <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/global.css">
+    <link rel="stylesheet" href="/css/index.css">
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 <body>
 <div class="container-fluid">
-    <div class="card text-center">
-        <div class="card-header text-left">
-            Welcome
-        </div>
-        <div class="card-body">
-            <form id="loginForm" action="/example/form" method="POST">
-                <div class="form-group">
-                    <label for="email_">Email address</label>
-                    <input type="text" class="form-control" id="email_" name="email" aria-describedby="emailHelp" placeholder="Enter email">
-                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    <div class="cus-center">
+        <div class="row">
+            <div class="col-6">
+                <ul class="list-group">
+                    <li class="list-group-item">Test Items</li>
+                    <li class="list-group-item list-group-item-primary"><a href="/ws">WebSocket Test!</a></li>
+                    <li class="list-group-item list-group-item-secondary">This is a secondary list group item</li>
+                    <li class="list-group-item list-group-item-success">This is a success list group item</li>
+                    <li class="list-group-item list-group-item-danger">This is a danger list group item</li>
+                    <li class="list-group-item list-group-item-warning">This is a warning list group item</li>
+                    <li class="list-group-item list-group-item-info">This is a info list group item</li>
+                    <li class="list-group-item list-group-item-light">This is a light list group item</li>
+                </ul>
+            </div>
+            <div class="col-6">
+                <div class="card text-center">
+                    <div class="card-header text-left">
+                        Welcome
+                    </div>
+                    <div class="card-body">
+                        <form id="loginForm" action="/example/form" method="POST">
+                            <div class="form-group">
+                                <label for="email_">Email address</label>
+                                <input type="text" class="form-control" id="email_" name="email"
+                                       aria-describedby="emailHelp" placeholder="Enter email">
+                                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                                    else.
+                                </small>
+                            </div>
+                            <div class="form-group">
+                                <label for="password_">Password</label>
+                                <input type="password" class="form-control" id="password_" name="password"
+                                       placeholder="Password">
+                            </div>
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="eck1" name="remember" value="true">
+                                <label class="form-check-label" for="eck1">Check me out</label>
+                            </div>
+                            <div class="card-footer text-muted">
+                                <button type="submit" id="formSubmitButton" class="btn btn-primary btn-sm">Form Test!
+                                </button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="password_">Password</label>
-                    <input type="password" class="form-control" id="password_" name="password" placeholder="Password">
-                </div>
-                <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="eck1" name="remember" value="true">
-                    <label class="form-check-label" for="eck1">Check me out</label>
-                </div>
-                <div class="card-footer text-muted">
-                    <button type="submit" id="formSubmitButton" class="btn btn-primary btn-sm">Submit</button>
-                </div>
-            </form>
+            </div>
         </div>
     </div>
+
 </div>
 <script src="/js/jquery-3.2.1.min.js"></script>
 <script>

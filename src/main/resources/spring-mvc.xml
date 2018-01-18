@@ -55,5 +55,5 @@
 	</bean>
 
 	<!--静态资源 -->
-	<mvc:resources mapping="/**" location="classpath:/static/,classpath:/public/" cache-period="31556926" />
+	<mvc:resources mapping="/**" location="classpath:/static/,classpath:/public/"/>
 </beans>
