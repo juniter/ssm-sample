@@ -13,7 +13,8 @@ public class MyHandler extends TextWebSocketHandler {
     public static final Logger logger = LoggerFactory.getLogger(MyHandler.class);
     @Override
     protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
-        logger.info("received message from client : {}",message.toString());
+        logger.info("received message from client : {},text message:{}",message.toString(),message.getPayload());
+        session.sendMessage(new TextMessage("server received your message!"));
         super.handleTextMessage(session, message);
     }
 

@@ -1,6 +1,6 @@
 package com.sy.controller;
 
-import com.sy.pojo.Sample;
+import com.sy.pojo.Samples;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -14,13 +14,19 @@ import org.springframework.web.servlet.ModelAndView;
 public class SampleController {
 	private static final Logger logger = LoggerFactory.getLogger(SampleController.class);
 	@RequestMapping(value="/form")
-	public void user(@ModelAttribute Sample sample, ModelAndView mav){
+	public void user(@ModelAttribute Samples sample, ModelAndView mav){
 		logger.info("请求信息:{}",sample.toString());
 	}
 
 	@GetMapping(value="/ws")
 	public ModelAndView redirectPage(ModelAndView mav){
 		mav.setViewName("ws/wsclient");
+		return mav;
+	}
+
+	@GetMapping(value = "/fileupload")
+	public ModelAndView redirectUploadPage(ModelAndView mav) {
+		mav.setViewName("");
 		return mav;
 	}
 }

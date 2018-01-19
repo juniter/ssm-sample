@@ -1,6 +1,6 @@
 package com.sy.pojo;
 
-public class Sample {
+public class Samples {
     private String email;
     private String password;
     private boolean remember;
@@ -9,7 +9,7 @@ public class Sample {
         return email;
     }
 
-    public Sample setEmail(String email) {
+    public Samples setEmail(String email) {
         this.email = email;
         return this;
     }
@@ -18,7 +18,7 @@ public class Sample {
         return password;
     }
 
-    public Sample setPassword(String password) {
+    public Samples setPassword(String password) {
         this.password = password;
         return this;
     }
@@ -27,7 +27,7 @@ public class Sample {
         return remember;
     }
 
-    public Sample setRemember(boolean remember) {
+    public Samples setRemember(boolean remember) {
         this.remember = remember;
         return this;
     }
